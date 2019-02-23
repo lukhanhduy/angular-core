@@ -1,0 +1,28 @@
+<div class="dt-toolbar-footer clearfix">
+    <div class="col-md-2 col-xs-4">
+        <select class="form-control input-sm" #select (change)="changeRecordsOnPage(select.value)">
+            <option *ngFor="let item of recordsOnPageOptions" [value]="item" [attr.selected]="(item == recordsOnPage) ? true : null">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="col-xs-3 col-md-3 ">
+        <ul class="pagination pagination-sm" style="margin:0px;">
+            <li><a href="javascript:void(0)" class="" onclick="return false;">[ Show
+                    {{pageDisplayInfo.from}} - {{pageDisplayInfo.to}} of {{pageDisplayInfo.records}} results ] </a></li>
+        </ul>
+    </div>
+    <div class="col-md-7 col-xs-5">
+        <ul class="pagination pagination-sm" style="margin:0px;float:right">
+            <li [ngClass]="{'disabled': (page == 1 || isLoading== true )}"><a href="javascript:void(0)" (click)="(page != 1) ? changePage(1): changePage(-1)">Frist</a></li>
+            <li [ngClass]="{'disabled': (page == 1 || isLoading== true )}"><a href="javascript:void(0)" (click)="changePage(page - 1)">
+                    Prev</a></li>
+            <ng-container  *ngFor="let item of items;let i = index">
+                    <li ><a href="javascript:void(0)" [ngClass]="{'hover': page == item}" (click)="changePage(item)">{{item}}</a></li>
+            </ng-container>
+            
+            <li [ngClass]="{'disabled': (page == lastPage || isLoading== true )}"><a href="javascript:void(0)" (click)="changePage(page + 1)">Next</a>
+            </li>
+            <li [ngClass]="{'disabled': (page == lastPage || isLoading== true )}"><a href="javascript:void(0)" (click)="(page != lastPage) ? changePage(lastPage): changePage(-1)">Last</a></li>
+        </ul>
+    </div>
+</div>
