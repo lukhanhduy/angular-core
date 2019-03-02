@@ -3,7 +3,6 @@ import {from, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {LocalStorageService} from './local-storage.service';
 import {HttpService} from './http.service';
-import {User} from '../../core/models/user.model';
 import {map} from 'rxjs/operators';
 import {LocalTime} from '../utils/local-time';
 
@@ -29,7 +28,7 @@ export class AuthService extends HttpService {
     }
 
     login(email: string, password: string) {
-        const url = `${this.URL}/admin-users/admin-login`;
+        const url = `${this.URL}/user/login`;
 
         return this.http.post(url, {email: email, password: password}).pipe(map((data: any) => {
             // login successful if there's a jwt token in the response

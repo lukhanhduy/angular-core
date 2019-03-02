@@ -51,23 +51,6 @@ export abstract class HttpService {
     }
 
     /**
-     * extend post http with form data
-     * @param url
-     * @param data
-     * @return {void}
-     */
-
-    postFormData(url: any, formData, data: any = {}) {
-        url = this.formatUrl(url, 'storageLink');
-        return this.http.post(url, formData).pipe(map(res => {
-                return this.extractData(res);
-            }),
-            catchError(err => {
-                return this.handleError(err);
-            }));
-    }
-
-    /**
      * extend get http
      * @param url
      * @param data

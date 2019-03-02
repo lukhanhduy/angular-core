@@ -9,14 +9,19 @@ import { HomeComponent } from './modules/home/views/home.component';
 
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppEnvService} from './core/services/environment.service';
+
 import {TokenInterceptor} from './shared/token-interceptor';
+import {ErrorInterceptor} from './shared/error-interceptor';
+
 import {TranslationService} from './core/services/translation.service';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,8 @@ import {TranslationService} from './core/services/translation.service';
     BrowserAnimationsModule,
     AppEnvService,
     TranslationService,
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

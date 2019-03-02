@@ -12,13 +12,10 @@ export class TokenInterceptor implements HttpInterceptor {
         const token: string = this.authService.getToken();
         const appToken = 'iiwGIFisnHLKZbQEUtAgx08CHaaYfIaDmgycZGWiw0bAz5L6VoAb9jG3YFN67uM6';
         const deviceId = '85b600edd1844a0387bf21b6b141aef4';
-        let headers = token ? {
+        let headers = {
             'deviceId': deviceId,
             'appToken': appToken,
             'Authorization': `Bearer ${token}`
-        } : {
-            'deviceId': deviceId,
-            'appToken': appToken
         };
 
         request = request.clone({
