@@ -1,18 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { PaginationComponent } from './../core/components/pagination/pagination.component';
-import { NgbPaginationModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     imports: [
-        CommonModule,
-        TranslateModule.forChild(),
-        NgbPaginationModule
+        CommonModule
     ],
-    declarations: [ PaginationComponent ],
+    declarations: [  ],
     exports: [
-        TranslateModule, PaginationComponent
     ]
 })
 export class SharedModule {

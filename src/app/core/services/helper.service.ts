@@ -22,8 +22,7 @@ export class HelperService {
         private _language: TranslationService,
         private _localStorageService: LocalStorageService
     ) {
-        this.statusList = this._language.getStatusList();
-        this.permission = this._authService.getPermissions();
+       
     }
 
     fnGetCurrentUser() {

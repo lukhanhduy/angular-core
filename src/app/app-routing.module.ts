@@ -5,12 +5,12 @@ import {AppRoutingPreloader} from './core/services/routing.service';
 const routes: Routes = [
   {
       path: '',
-      loadChildren: './modules/modules.module#ModulesModule',
+      loadChildren: './modules/main.module#MainModule'
   },
-  {
-      path: '',
-      loadChildren: './modules/auth/auth.module#AuthModule',
-  },
+  // {
+  //     path: '',
+  //     loadChildren: './modules/auth/auth.module#AuthModule',
+  // },
   {path: '**', redirectTo: '404'},
 ];
 

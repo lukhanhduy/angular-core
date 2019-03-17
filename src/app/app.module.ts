@@ -14,18 +14,21 @@ import {TokenInterceptor} from './shared/token-interceptor';
 import {ErrorInterceptor} from './shared/error-interceptor';
 
 import {TranslationService} from './core/services/translation.service';
-import { MainComponent } from './main/main.component';
+
+import { templateConfig } from './core/configs/admin.conf';  
+import { LayoutModule } from 'angular-admin-lte';  
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    MainComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule.forRoot(templateConfig),  
+
   ],
   providers: [
     BrowserAnimationsModule,
