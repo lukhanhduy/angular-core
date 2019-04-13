@@ -1,8 +1,14 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<div id="wrapper" class="wrapper" style="background-color: #F7F7F7;" >
-  <div class="main-wrapper">
-    <router-outlet></router-outlet>
-  </div>  
-</div>
-
+<mk-layout-wrapper>
+  <!-- <mk-layout-sidebar-right>
+    Sidebar right HTML
+  </mk-layout-sidebar-right> -->
+  <mk-layout-header>
+    <mk-layout-header-logo>Logo HTML</mk-layout-header-logo>
+    <mk-layout-header-logo-mini>Logo Mini HTML</mk-layout-header-logo-mini>
+  </mk-layout-header>
+  <app-sidebar></app-sidebar>
+  <mk-layout-content>
+    <router-outlet name="container"></router-outlet>
+  </mk-layout-content>
+  <app-footer></app-footer>
+</mk-layout-wrapper>

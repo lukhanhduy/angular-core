@@ -1,0 +1,62 @@
+.tab-close {
+    cursor: pointer;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    border: 1px solid;
+    line-height: 7px;
+    padding: 1px;
+    color: #7ca4bf;
+    font-size: 11px;
+}
+.nav-tabs>li>a:hover .tab-close{
+    color: #ca0202;
+    background-color: #ffe8e8;
+}
+.nav-tabs>li{
+    margin-bottom: -3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    background-color: #31729e;
+}
+.nav-tabs>li:last-child{
+    border-right:0px;
+}
+.nav-tabs>li>a{        
+    padding:15px 15px 14px 10px;
+    margin: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #adadad;    
+    border-right: 1px solid #155e90;
+    color:#fff;
+}
+.nav-tabs>li:first-child>a,.nav-tabs>li:last-child>a{
+    border-right:none;
+}  
+.nav-tabs>li:nth-child(2)>a{
+    border-left: 1px solid #155e90;
+    border-right: 1px solid #155e90;
+}  
+.nav-tabs>li.active>a{
+    font-weight: normal;
+    color: #717171;
+    background-color: #ffffff;
+}
+.nav-tabs>li>a.tab-next,.nav-tabs>li>a.tab-prev{
+    padding: 15px 5px 14px 5px;
+}
+.nav-tabs>.arrow{
+  width:25px !important;
+}
+
+.nav-tabs>li>a:hover {
+    border-color: #aec8da #aec8da #aec8da;
+}
+
+.nav-tabs>li>a:hover {
+    text-decoration: none;
+    background-color: #aec8da;
+}

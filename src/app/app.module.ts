@@ -15,19 +15,16 @@ import {ErrorInterceptor} from './shared/error-interceptor';
 
 import {TranslationService} from './core/services/translation.service';
 
-import { templateConfig } from './core/configs/admin.conf';  
-import { LayoutModule } from 'angular-admin-lte';  
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    TableComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    LayoutModule.forRoot(templateConfig),  
+    AppRoutingModule 
 
   ],
   providers: [

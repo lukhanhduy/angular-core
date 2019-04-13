@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-master',
@@ -6,10 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./master.component.scss']
 })
 export class MasterComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
-
 }
