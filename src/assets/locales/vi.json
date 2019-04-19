@@ -1,0 +1,7 @@
+{
+    "app": "tên app",
+    "login": "đăng nhập",
+    "lblEmail": "email",
+    "lblPassword": "mật khẩu",
+    "requiredField": " {{field}} không được bỏ trống"
+}

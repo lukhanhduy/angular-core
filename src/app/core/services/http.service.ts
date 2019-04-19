@@ -5,7 +5,7 @@ import {map, catchError} from 'rxjs/operators';
 import _ from 'lodash';
 
 export abstract class HttpService {
-    protected URL = `${environment.apiUrl}/${environment.apiPath}/${environment.apiVersion}`;
+    protected URL = `${environment.apiUrl}/${environment.apiPath}`;
 
     constructor(protected http: HttpClient) {
     }
@@ -40,8 +40,8 @@ export abstract class HttpService {
      * @param data
      * @return {void}
      */
-    post(url: any, data: any) {
-        url = this.formatUrl(url);
+    post(path: any, data: any) {
+        const url = this.getUrl(path);
         return this.http.post(url, data).pipe(map(res => {
                 return this.extractData(res);
             }),
@@ -57,8 +57,8 @@ export abstract class HttpService {
      * @return {void}
      */
 
-    get(url, data: any = {}): Observable<any> {
-        url = this.formatUrl(url);
+    get(path, data: any = {}): Observable<any> {
+        const url = this.getUrl(path);
         return this.http.get(url, {
             params: {...data}
         }).pipe(map(res => {
@@ -68,11 +68,8 @@ export abstract class HttpService {
                 return this.handleError(err);
             }));
     }
-
-    formatUrl(url, type?) {
-        if (_.isUndefined(type)) {
-            return `${this.URL}/${url}`;
-        }
-        return `${this[type]}/${url}`;
+    getUrl(path: string){
+        const url = `${this.URL}/${path}`;
+        return url;
     }
 }

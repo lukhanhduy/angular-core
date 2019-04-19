@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Login</title>
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" formControlName="email" email="true"
+                        [ngClass]="{ 'is-invalid': ctrlForm.submitted && f.email.errors, 'is-valid': f.email.valid }" />
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" formControlName="password"
+                        [ngClass]="{ 'is-invalid': ctrlForm.submitted && f.password.errors,  'is-valid': f.password.valid  }" />
+                </div>
+
+                <div *ngIf="ctrlForm.submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required" class="text-danger">
+                        <app-translate [key]="'requiredField'" [replaces]="{field: 'lblEmail'}"></app-translate>
+                    </div>
+                </div>
+                <div *ngIf="ctrlForm.submitted && f.email.valid && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required" class="text-danger">
+                        <app-translate [key]="'requiredField'" [replaces]="{field: 'lblPassword'}"></app-translate>
+                    </div>
+                </div>
+                <button>{{'login' | translate}}</button>
+                <p class="message"><a href="#">Forgot Password</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

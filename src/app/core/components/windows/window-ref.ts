@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {ToastrService} from 'ngx-toastr';
+import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -34,7 +34,10 @@ export class WindowRef {
         return _getElement(key);
     }
 
-    showMessageBox(message: any, type: any, position) {
+    showMessageBox(message: any, type: any, position?: any) {
+        if (!position) {
+            position = 'top-right';
+        }
         this.toastr[type](message, 'Helloxom', {
             positionClass: `toast-${position}`,
             timeOut: 2000

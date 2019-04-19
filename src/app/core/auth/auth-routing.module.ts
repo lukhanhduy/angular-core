@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '../core/services/auth-guard.service';
-import { MasterComponent } from './partials/master/master.component';
+import { LoginComponent } from './login/login.component';
 const routes: Routes = [
+  // {path: '', redirectTo: 'auth', pathMatch: 'full'},
   {
     path: '',
-    component: MasterComponent
+    redirectTo: 'login'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
@@ -13,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MainRoutingModule { }
+export class AuthRoutingModule { }

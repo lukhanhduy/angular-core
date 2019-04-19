@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "123.com",
-  apiPath: 'api',
-  apiVersion: 'v1'
+  apiUrl: "http://localhost:8000",
+  apiPath: 'api'
 };
 
 /*

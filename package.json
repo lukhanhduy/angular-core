@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~7.1.0",
+    "@angular/animations": "^7.1.4",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
@@ -19,6 +19,9 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.1",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "angular-admin-lte": "^2.0.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
@@ -27,7 +30,7 @@
     "ng-pick-datetime-moment": "^1.0.8",
     "ng2-select2": "^1.0.0-beta.16",
     "ngx-lightbox": "^1.2.0",
-    "ngx-toastr": "^9.1.2",
+    "ngx-toastr": "^9.2.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

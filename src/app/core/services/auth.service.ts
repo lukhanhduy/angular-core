@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {from, Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {LocalStorageService} from './local-storage.service';
-import {HttpService} from './http.service';
-import {map} from 'rxjs/operators';
-import {LocalTime} from '../utils/local-time';
-
-
+import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { LocalStorageService } from './local-storage.service';
+import { HttpService } from './http.service';
+import { map } from 'rxjs/operators';
+import { LocalTime } from '../utils/local-time';
+import { API } from './../../configs/api.conf';
+import * as _ from 'lodash';
 @Injectable({
     providedIn: 'root'
 })
@@ -18,30 +18,26 @@ export class AuthService extends HttpService {
     }
 
     getToken(): string {
-        const auth = this.localStorageService.getItem('AU-USER');
-
-        if (auth) {
-            return auth.id;
-        }
-
-        return null;
+        return this.localStorageService.getItem('TOKEN') || null;
     }
 
-    login(email: string, password: string) {
-        const url = `${this.URL}/user/login`;
-
-        return this.http.post(url, {email: email, password: password}).pipe(map((data: any) => {
-            // login successful if there's a jwt token in the response
-            if (data && data.data) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                this.localStorageService.setItem('AU-USER', data.data);
-                this.localStorageService.setItem('USER', data.data.user);
-                this.localStorageService.setItem('TOKEN', data.data.id);
-                this.localStorageService.setItem('PERMISSION',data.data.permissions);
-            }
-
-            return data;
-        }));
+    fnLogin(user: any) {
+        const {
+            email = '', password = ''
+        } = user;
+        return new Promise((resolve: any, reject: any) => {
+            this.post(API.ADMIN.login, { email, password }).subscribe((res: any) => {
+                this.localStorageService.setItem('USER', _.get(res, 'data.user', {}));
+                this.localStorageService.setItem('TOKEN', _.get(res, 'data.accessToken', ''));
+                this.localStorageService.setItem('PERMISSION', _.get(res, 'data.permissions.rules', []));
+                this.localStorageService.setItem('ROLE', _.get(res, 'data.role', []));
+                this.localStorageService.setItem('IS_LOGIN', true);
+                this.localStorageService.setItem("MODULES",_.get(res, 'data.modules', []))
+                resolve({ code: res.code });
+            }, (err: any) => {
+                reject({ code: err.code, isError: true, message: err.message });
+            })
+        });
     }
 
     logout() {
@@ -53,15 +49,7 @@ export class AuthService extends HttpService {
     }
 
     isAuthenticated(): boolean {
-        const auth = this.localStorageService.getItem('AU-USER');
-        const localTime = new LocalTime();
-
-        if (auth) {
-            const timeToLive = auth.ttl;
-            return localTime.isSameOrAfter(localTime.addSeconds(timeToLive, auth.created), localTime.getDate());
-        }
-
-        return false;
+        return this.localStorageService.getItem('IS_LOGIN') || false;
     }
 
     getCurrentUser() {
@@ -74,10 +62,17 @@ export class AuthService extends HttpService {
     }
 
     getPermissions() {
-        const permission = this.localStorageService.getItem('PERMISSION');
-
+        const permission = this.localStorageService.getItem('PERMISSIONS');
         if (permission) {
             return permission;
+        }
+        return [];
+    }
+
+    getModules() {
+        const modules =  this.localStorageService.getItem('MODULES');
+        if(modules){
+            return modules;
         }
         return [];
     }

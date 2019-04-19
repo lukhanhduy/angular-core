@@ -1,0 +1,7 @@
+{
+    "app": "App Name",
+    "login": "Login",
+    "lblEmail": "email",
+    "lblPassword": "password",
+    "requiredField": "The {{field}} is required"
+}
